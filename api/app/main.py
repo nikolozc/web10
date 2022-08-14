@@ -374,7 +374,7 @@ async def signup(form_data: models.SignUpForm):
     return res
 
 # gets the homepage stats
-@app.post("/stats",include_in_schema=False)
+@app.post("/stats",include_in_schema=True)
 async def stats():
     apps = db.get_apps()
     users = db.get_user_count()
@@ -390,7 +390,7 @@ async def stats():
 async def register_app(info:dict):
     if "url" not in info:
         return
-    if "http://" in info["url"] or "localhost" in info["url"] or "file://" in info["url"] or "vscode-webview://" in info["url"]:
+    if "file://" in info["url"] or "vscode-webview://" in info["url"]:
         return
     db.register_app(info)
 

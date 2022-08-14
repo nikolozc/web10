@@ -23,7 +23,7 @@ function displayApps(apps){
 }
 
 axios
-  .post("https://api.web10.app/stats")
+  .post("http://api.localhost/stats")
   .then((response) => {
     display(response.data);
   })
